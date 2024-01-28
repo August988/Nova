@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Coming soon</title>
+        <link rel="stylesheet" href="/style.css" />
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    </head>
+    <body>
+        <h1>Rovive is coming back very soon</h1>
+        <p>Stay tuned.....</p>
+
+        <button id="musicplay">play music</button>
+        <script>
+            document
+                .getElementById("musicplay")
+                .addEventListener("click", function () {
+                    let audio = new Audio("/music.mp3");
+                    audio.play();
+                });
+        </script>
+
+        <script>
+            function checkIfSiteUpYet() {
+                $.ajax({
+                    url: "/issiteupyet.php",
+                    success: function (result) {
+                        if (result == "yes") {
+                            window.location.href = "/";
+                        }
+                    },
+                });
+            }
+            setInterval(checkIfSiteUpYet, 1000);
+        </script>
+    </body>
+</html>
